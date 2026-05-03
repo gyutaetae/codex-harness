@@ -76,6 +76,18 @@ python scripts/run_phases.py {id}-{name}
 | `PHASE_TIMEOUT` | `1800` | 각 phase 최대 실행 시간 (초) |
 | `SKIP_GIT` | `0` | `1`이면 git 커밋 시도 안 함 |
 
+## GitHub에 올리기 (`gyutaetae/harness`)
+
+이 PC에는 `gh` 로그인이 없어 자동 푸시는 못 했다. **gyutaetae 계정 PAT**으로 한 번에 생성+푸시:
+
+```powershell
+cd C:\Users\kym70\OneDrive\Desktop\harness
+$env:GH_TOKEN = "<PAT>"   # repo 권한 (classic) 또는 fine-grained Contents+Metadata
+python scripts/publish_to_github.py
+```
+
+기본값: 소유자 `gyutaetae`, 레포 이름 `harness`, 브랜치 `main`. 바꾸려면 `GITHUB_OWNER`, `GITHUB_REPO`, `DEFAULT_BRANCH` 환경 변수 사용.
+
 ## 요구사항
 
 - Python 3.10+ (`from __future__ import annotations` 사용으로 3.9에서도 동작은 함)
