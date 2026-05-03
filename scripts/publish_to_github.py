@@ -125,7 +125,7 @@ def main() -> None:
         print(f"Repo {OWNER}/{REPO} already exists.")
 
     remote_url = f"https://{token}@github.com/{OWNER}/{REPO}.git"
-    run_git("remote", "remove", "origin", cwd=root)
+    run_git("remote", "remove", "origin", cwd=root)  # ok if missing
     ra = run_git("remote", "add", "origin", remote_url, cwd=root)
     if ra.returncode != 0:
         print(ra.stderr)
